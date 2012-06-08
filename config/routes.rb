@@ -52,7 +52,10 @@ TamilClasses::Application.routes.draw do
 
   # You can have the root of your site routed with "root"
   # just remember to delete public/index.html.
-  # root :to => 'welcome#index'
+  root :to => 'chapters#index'
+  resources :chapters, :only => [:index, :show]
+  resources :phrases, :only => [:create, :update]
+  post "/phrases/:id" => "phrases#update"
 
   # See how all your routes lay out with "rake routes"
 
