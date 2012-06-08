@@ -12,13 +12,13 @@ ko.bindingHandlers.executeOnEnter =
 class Phrase
   constructor: (editable, json = {}) ->
     @id = json.id
-    @chapterId = json.chapter_id
-    @editable = ko.observable(editable)
-    @readonly = ko.computed => ! this.editable()
+    @chapter_id = json.chapter_id
     @english = ko.observable(json.english)
     @tamil = ko.observable(json.tamil)
     @tamil_alt = ko.observable(json.tamil_alt)
     @kannada = ko.observable(json.kannada)
+    @editable = ko.observable(editable)
+    @readonly = ko.computed => ! this.editable()
 
   edit: ->
     @editable(true)
