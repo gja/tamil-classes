@@ -10,9 +10,9 @@ ko.bindingHandlers.executeOnEnter =
         true;
 
 class Phrase
-  constructor: (editable, json = {}) ->
+  constructor: (editable, chapter, json = {}) ->
     @id = json.id
-    @chapter_id = json.chapter_id
+    @chapter = chapter
     @english = ko.observable(json.english)
     @tamil = ko.observable(json.tamil)
     @tamil_alt = ko.observable(json.tamil_alt)
@@ -27,7 +27,7 @@ class Phrase
     if @id then Routes.phrase_path(@id, {format: 'json'}) else Routes.phrases_path({format: 'json'})
 
   toJson: ->
-    chapter_id: @chapterId
+    chapter_id: @chapter.id
     english: @english()
     tamil: @tamil()
     tamil_alt: @tamil_alt()
@@ -36,15 +36,17 @@ class Phrase
   save: ->
     @editable(false)
     $.post this.url(), {phrase: this.toJson()}, (data) =>
-      @id = data.id if data
+      unless @id
+        @id = data.id
+        @chapter.addNewLesson()
 
 class this.EditChapter
   constructor: (json) ->
-    @chapterId = json.id
+    @id = json.id
     @phrases = ko.observableArray()
-    @phrases.push new Phrase(false, phrase) for phrase in json.phrases
+    @phrases.push new Phrase(false, this, phrase) for phrase in json.phrases
     this.addNewLesson()
 
   addNewLesson: ->
-    phrase = new Phrase(true, {chapter_id: @chapterId})
+    phrase = new Phrase(true, this)
     @phrases.push phrase
