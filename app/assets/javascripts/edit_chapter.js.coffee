@@ -13,10 +13,11 @@ class Phrase
   constructor: (editable, chapter, json = {}) ->
     @id = json.id
     @chapter = chapter
-    @english = ko.observable(json.english)
-    @tamil = ko.observable(json.tamil)
-    @tamil_alt = ko.observable(json.tamil_alt)
-    @kannada = ko.observable(json.kannada)
+    for property in ['english', 'tamil', 'tamil_alt', 'kannada']
+      do (property) =>
+        this[property] = ko.observable(json[property])
+        this[property + "Focused"] = ko.observable(false)
+        this[property + "Clicked"] = -> this.edit(); this[property + "Focused"](true)
     @editable = ko.observable(editable)
     @readonly = ko.computed => ! this.editable()
 
@@ -50,3 +51,4 @@ class this.EditChapter
   addNewLesson: ->
     phrase = new Phrase(true, this)
     @phrases.push phrase
+    phrase.englishFocused(true)

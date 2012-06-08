@@ -9,10 +9,10 @@
         %td Kannada
     %tbody{"data-bind" => "foreach: phrases"}
       %tr
-        %td= render :partial => "column", :locals => {:field => "english", :focus => true}
-        %td= render :partial => "column", :locals => {:field => "tamil", :focus => false}
-        %td= render :partial => "column", :locals => {:field => "tamil_alt", :focus => false}
-        %td= render :partial => "column", :locals => {:field => "kannada", :focus => false}
+        %td= render :partial => "column", :locals => {:field => "english"}
+        %td= render :partial => "column", :locals => {:field => "tamil"}
+        %td= render :partial => "column", :locals => {:field => "tamil_alt"}
+        %td= render :partial => "column", :locals => {:field => "kannada"}
         %td
           %button{"data-bind" => "click: edit, visible: readonly"} Edit
           %button{"data-bind" => "click: save, visible: editable", "style" => "display: none"} Save

@@ -1,2 +1,2 @@
-%span{"data-bind" => "text: #{field}, visible: readonly, click: edit"}
-%input{"data-bind" => "value: #{field}, visible: editable, executeOnEnter: save, valueUpdate: 'afterkeydown'", "style" => "display: none"}
+%span{"data-bind" => "text: #{field}, visible: readonly, click: #{field}Clicked"}
+%input{"data-bind" => "value: #{field}, visible: editable, executeOnEnter: save, valueUpdate: 'afterkeydown', hasfocus: #{field}Focused", "style" => "display: none"}
