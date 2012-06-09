@@ -11,3 +11,14 @@
  *= require_self
  *= require_tree .
  */
+
+.chapter > .name {
+  font-weight: bold;
+  font-size: 20px;
+  padding: 5px;
+  text-align: center;
+}
+
+.chapter > .heading {
+  font-weight: bold;
+}

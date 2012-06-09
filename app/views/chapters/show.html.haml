@@ -3,10 +3,10 @@
   %table
     %thead
       %tr
-        %td English
-        %td Tamil
-        %td Alternate Tamil
-        %td Kannada
+        %td.heading English
+        %td.heading Tamil
+        %td.heading Alternate Tamil
+        %td.heading Kannada
     %tbody{"data-bind" => "foreach: phrases"}
       %tr
         %td= render :partial => "column", :locals => {:field => "english"}

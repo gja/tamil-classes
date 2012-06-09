@@ -35,8 +35,8 @@ class Phrase
     kannada: @kannada()
 
   save: ->
-    @editable(false)
     $.post this.url(), {phrase: this.toJson()}, (data) =>
+      @editable(false)
       unless @id
         @id = data.id
         @chapter.addNewLesson()
