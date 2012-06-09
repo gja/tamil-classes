@@ -1,3 +1,7 @@
 - @chapters.each do |chapter|
   .chapter
     = link_to chapter.name, chapter
+.new-chapter
+  = form_for Chapter.new do |f|
+    New Chapter:     
+    = f.text_field :name

@@ -8,4 +8,8 @@ class ChaptersController < ApplicationController
   def show
     respond_with @chapter = Chapter.find(params[:id])
   end
+
+  def create
+    respond_with @chapter = Chapter.create!(params[:chapter])
+  end
 end
