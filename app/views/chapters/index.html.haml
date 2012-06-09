@@ -1,6 +1,7 @@
 - @chapters.each do |chapter|
   .chapter
     = link_to chapter.name, chapter
+%p
 .new-chapter
   = form_for Chapter.new do |f|
     New Chapter:     
