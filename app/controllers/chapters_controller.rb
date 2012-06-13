@@ -6,6 +6,7 @@ class ChaptersController < ApplicationController
   end
 
   def show
+    @chapters = Chapter.all
     respond_with @chapter = Chapter.find(params[:id])
   end
 

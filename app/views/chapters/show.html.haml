@@ -1,4 +1,4 @@
-.chapter
+.chapter-page
   .name= @chapter.name
   %table
     %thead
@@ -16,6 +16,9 @@
         %td
           %button{"data-bind" => "click: edit, visible: readonly"} Edit
           %button{"data-bind" => "click: save, visible: editable", "style" => "display: none"} Save
+.chapter-list
+  - @chapters.each do |chapter|
+    .chapter= link_to chapter.name, chapter
 
 :javascript
   var viewModel = new EditChapter(#{@chapter.to_json.html_safe});

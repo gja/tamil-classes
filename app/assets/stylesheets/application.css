@@ -12,13 +12,23 @@
  *= require_tree .
  */
 
-.chapter > .name {
+.chapter-page > .name {
   font-weight: bold;
   font-size: 20px;
   padding: 5px;
   text-align: center;
 }
 
-.chapter > .heading {
+.chapter-page > .heading {
   font-weight: bold;
+}
+
+.chapter-page {
+  float: left;
+}
+
+.chapter-list {
+  float: left;
+  padding-top: 50px;
+  padding-left: 20px;
 }
